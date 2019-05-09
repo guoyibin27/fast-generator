@@ -1,9 +1,6 @@
 package ${package}.${moduleName}.controller;
 
-import java.util.Arrays;
-import java.util.Map;
-
-import org.apache.shiro.authz.annotation.RequiresPermissions;
+import org.apache.shiro.authz.annotation .RequiresPermissions;
 import org.springframework.beans.factory.annotation .Autowired;
 import org.springframework.web.bind.annotation .PathVariable;
 import org.springframework.web.bind.annotation .RequestBody;
@@ -30,15 +27,15 @@ import ${mainPath}.common.utils.R;
 class ${className}Controller {
 
     @Autowired
-    lateinit var ${classname}Service ${className}Service ;
+    lateinit var ${classname}Service:${className}Service;
 
     /**
      * 列表
      */
     @RequestMapping("/list")
     @RequiresPermissions("${moduleName}:${pathName}:list")
-    fun list(@RequestParam Map<String, Object> params): R {
-        val page = ${classname}Service.queryPage (params);
+    fun list(@RequestParam params: MutableMap<String, Any>): R {
+        val page = ${classname}Service.queryPage(params);
         return R.ok().put("page", page);
     }
 
@@ -48,7 +45,7 @@ class ${className}Controller {
      */
     @RequestMapping("/info/{${pk.attrname}}")
     @RequiresPermissions("${moduleName}:${pathName}:info")
-    fun info(@PathVariable("${pk.attrname}") ${pk.attrType} ${pk.attrname}): R {
+    fun info(@PathVariable("${pk.attrname}") ${pk.attrname}:${pk.attrType}): R {
         val ${classname} = ${classname}Service.getById(${pk.attrname});
         return R.ok().put("${classname}", ${classname});
     }
@@ -58,8 +55,8 @@ class ${className}Controller {
      */
     @RequestMapping("/save")
     @RequiresPermissions("${moduleName}:${pathName}:save")
-    fun save(@RequestBody ${className}Entity ${classname}):R {
-        ${classname}Service.save(${classname});
+    fun save(@RequestBody ${classname}:${className}Entity): R {
+            ${classname}Service.save(${classname});
         return R.ok();
     }
 
@@ -68,8 +65,8 @@ class ${className}Controller {
      */
     @RequestMapping("/update")
     @RequiresPermissions("${moduleName}:${pathName}:update")
-    fun update(@RequestBody ${className}Entity ${classname}) :R {
-        ${classname}Service.updateById(${classname});
+    fun update(@RequestBody ${classname}:${className}Entity): R {
+            ${classname}Service.updateById(${classname});
         return R.ok(); }
 
     /**
@@ -77,8 +74,9 @@ class ${className}Controller {
      */
     @RequestMapping("/delete")
     @RequiresPermissions("${moduleName}:${pathName}:delete")
-    fun delete(@RequestBody ${pk.attrType}[] ${pk.attrname}s):R {
-        ${classname}Service.removeByIds(Arrays.asList(${pk.attrname}s));
+    fun delete(@RequestBody ${pk.attrname}s:Array<${pk.attrType}>):R
+    {
+            ${classname}Service.removeByIds(${pk.attrname}s.toList()));
         return R.ok();
     }
 

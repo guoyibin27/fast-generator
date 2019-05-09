@@ -15,6 +15,6 @@ import java.util.Map;
  */
 interface ${className}Service : IService<${className}Entity> {
 
-    fun queryPage (Map<String, Object> params) : PageUtils;
+    fun queryPage (params:MutableMap<String, Any>):PageUtils;
 }
 

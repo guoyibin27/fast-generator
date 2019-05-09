@@ -1,10 +1,10 @@
-package ${package}.${moduleName}.service.impl;
+package ${package}.${moduleName}.service.impl ;
 
 import org.springframework.stereotype.Service;
 import java.util.Map;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
-import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.baomidou.mybatisplus.extension.service.impl .ServiceImpl;
 import ${mainPath}.common.utils.PageUtils;
 import ${mainPath}.common.utils.Query;
 
@@ -16,8 +16,7 @@ import ${package}.${moduleName}.service.${className}Service;
 @Service("${classname}Service")
 class ${className}ServiceImpl : ServiceImpl<${className}Dao, ${className}Entity>(), ${className}Service {
 
-    @Override
-    fun  queryPage(Map<String, Object> params) :PageUtils{
+    override fun queryPage(params: MutableMap<String, Any>): PageUtils {
         val page = this.page(Query<${className}Entity>().getPage(params), QueryWrapper<${className}Entity>());
         return PageUtils(page);
     }
